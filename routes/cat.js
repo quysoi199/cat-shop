@@ -8,7 +8,7 @@ const { log } = require("console");
 router.get("/", async (req, res) => {
   try {
     const product = await catModel.find({});
-    res.render("cat", { infor: product });
+    res.render("", { infor: product });
     // res.status(200).json(product);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -30,7 +30,8 @@ router.post("/", async (req, res) => {
     const product = await catModel.find({});
     const cat = await catModel.create(req.body);
     product.push(cat);
-    res.redirect("/cat");
+
+    res.redirect("/");
     // res.status(200).json(cat);
   } catch (error) {
     res.status(500).json({ message: error.message });
