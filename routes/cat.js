@@ -7,8 +7,19 @@ const { log } = require("console");
 
 router.get("/", async (req, res) => {
   try {
+    const query = req.query;
+    const page = query.page || 1;
+    const limit = 5;
+    const skip = (page - 1) * limit;
     const product = await catModel.find({});
-    res.render("", { infor: product });
+
+    const pageCount = Math.ceil(product.length / limit) || 1;
+    const productByPage = await catModel.find({}).skip(skip).limit(limit);
+    res.render("", {
+      infor: productByPage,
+      pageCount: pageCount,
+      page: parseInt(page),
+    });
     // res.status(200).json(product);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -30,7 +41,7 @@ router.post("/", async (req, res) => {
     const product = await catModel.find({});
     const cat = await catModel.create(req.body);
     product.push(cat);
-
+    console.log(req.query, "aaa");
     res.redirect("/");
     // res.status(200).json(cat);
   } catch (error) {

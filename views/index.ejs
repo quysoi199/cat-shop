@@ -39,15 +39,16 @@
 </head>
 
 <body class="w-full h-full p-0 bg-[url('https://wallsneedlove.com/cdn/shop/products/w0263_1s_Nautical-Waves-Wallpaper-for-Walls-Waves-of-Chic_Repeating-Pattern-Sample-1.jpg?v=1604091534')]">    
-    <div class="">
-        <p class="text-3xl flex items-center  font-medium text-red-600/75 justify-center h-24 w-full font-sans ... ">Cửa hàng Bông bốn chân
-        </p>
-    </div>
- 
+   
 
 
-    <div class="flex flex-col container mx-auto  w-1/2 bg-pink-100/50">
-        <table class=" border-collapse border border-slate-400 ...">
+    <div class="flex flex-col  container mx-auto md:w-3/5  bg-white overflow-x-auto rounded-lg mt-20">
+        <div class="border-b-2 border-black-500">
+            <p class="text-3xl flex items-center  font-medium text-red-600/75 justify-center h-24 w-full font-sans ... ">Cửa
+                hàng Bông thú cưng
+            </p>
+        </div>
+        <table class=" border-collapse border border-slate-400 ... m-10 ">
             <thead>
                 <tr>
                     <th class="border border-slate-300 ...">ID</th>
@@ -58,11 +59,11 @@
                     <th class="border border-slate-300 ..."></th>
                 </tr>
             </thead>
-
+            
             <% infor.map(function(item,i) { %>
-                <tbody>
+                <tbody >
                     <tr>
-                        <td class="border border-slate-300 ...">
+                        <td class="border border-slate-300 ... ">
                             <%= i+1%>
                         </td>
                         <td class="border border-slate-300 ...">
@@ -202,13 +203,58 @@
                 <% }); %>
         </table>
         <!-- drawer init and show -->
-        <div class="text-right my-4 mr-10">
-            <button
-                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-                type="button" data-drawer-target="drawer-navigation" data-drawer-show="drawer-navigation"
-                aria-controls="drawer-navigation" id="conFirmUpdate">
-                Tạo mới
-            </button>
+
+        <div class="flex justify-between mx-10 my-4  items-center">
+
+
+      
+  
+        <nav aria-label="Page navigation example flex justify-between">
+            <ul class="inline-flex -space-x-px text-sm">
+                <% if(page> 1) { %>
+                    <li>
+                        <a href="?page=<%= page - 1 %>"
+                            class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white font-bold">
+                       < </a>
+                    </li>
+                    <% } %>
+        
+        
+                        <% for (let i=1; i < pageCount+1; i++) { %>
+                            <!-- Các lệnh hoặc HTML ở đây sẽ được lặp lại -->
+                            <% if( page===i) { %>
+                                <li>
+                                    <a href="?page=<%= i %>" aria-current="page"
+                                        class="flex items-center justify-center px-3 h-8 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white">
+                                        <%= i %>
+                                    </a>
+                                </li>
+                                <% } else {%>
+        
+                                    <li>
+                                        <a href="?page=<%= i %>" aria-current="page"
+                                            class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                                            <%= i %>
+                                        </a>
+                                    </li>
+                                    <% }} %>
+                                        <% if(page < pageCount) { %>
+                                            <li>
+                                                <a href="?page=<%= page + 1 %>"
+                                                    class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white font-bold">></a>
+                                            </li>
+                                            <% } %>
+            </ul>
+        </nav>
+
+            <div class="">
+                <button
+                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                    type="button" data-drawer-target="drawer-navigation" data-drawer-show="drawer-navigation"
+                    aria-controls="drawer-navigation" id="conFirmUpdate">
+                    Tạo mới
+                </button>
+            </div>
         </div>
         
         <!-- drawer component -->
@@ -236,7 +282,7 @@
                                 Tên
                             </label>
                             <input
-                            required="sadfghj"
+                            required=""
                                 class="shadow appearance-none border  rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                                 name="name">
                         </div>
@@ -245,6 +291,7 @@
                                 Chiều cao (cm)
                             </label>
                             <input
+                             required=""
                                 class="shadow appearance-none border  rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                                 name="height">
                         </div>
@@ -253,6 +300,7 @@
                                 Cân nặng (kg)
                             </label>
                             <input
+                             required=""
                                 class="shadow appearance-none border  rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                                 name="weight">
                         </div>
@@ -261,6 +309,7 @@
                                 Loại
                             </label>
                             <input
+                             required=""
                                 class="shadow appearance-none border  rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                                 name="type">
                         </div>
@@ -280,6 +329,8 @@
                 </div>
             </form>
         </div>
+
+        
 </div>
 
 </body>
@@ -287,7 +338,7 @@
     feather.replace();
     var requestId
     var updateId
-  
+    
     function handlerDelete(e) {
         requestId = e.getAttribute('requestId')
 
@@ -329,7 +380,7 @@
                         data: result
                     })
                         .then((response) => {
-                            location.replace('/')
+                            location.reload()
                         })
                         .catch((err) => console.log(err))
         }
