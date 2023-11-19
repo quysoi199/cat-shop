@@ -122,24 +122,28 @@
                                                     <label
                                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tên</label>
                                                     <input name="name" id="name-<%= i %>" value="<%= infor[i].name %>"
-                                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white">
+                                                    required=""
+                                                        class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white">
                                                 </div>
                                                 <div>
                                                     <label
                                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Chiều cao (cm)</label>
                                                     <input name="height" id="height-<%= i %>" value="<%= infor[i].height %>"
+                                                    required=""
                                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white">
                                                 </div>
                                                 <div>
                                                     <label
                                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Cân nặng (kg)</label>
                                                     <input name="weight" id="weight-<%= i %>" value="<%= infor[i].weight %>"
+                                                    required=""
                                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white">
                                                 </div>
                                                 <div>
                                                     <label
                                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Loại</label>
                                                     <input name="type" id="type-<%= i %>" value="<%= infor[i].type %>"
+                                                    required=""
                                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white">
                                                 </div>
 
@@ -338,7 +342,7 @@
     feather.replace();
     var requestId
     var updateId
-    
+
     function handlerDelete(e) {
         requestId = e.getAttribute('requestId')
 
